@@ -12,7 +12,7 @@ import (
 	"invoice-generator/pkg/generator"
 )
 
-const DateFormat = "01/02/2006"
+const dateFormat = "01/02/2006"
 
 func main() {
 	err := godotenv.Load()
@@ -22,12 +22,12 @@ func main() {
 
 	invoiceDate := os.Getenv("INVOICE_DATE")
 	if invoiceDate == "" {
-		invoiceDate = time.Now().Format(DateFormat)
+		invoiceDate = time.Now().Format(dateFormat)
 	}
 
 	dueDate := os.Getenv("DUE_DATE")
 	if dueDate == "" {
-		dueDate = time.Now().AddDate(0, 0, 30).Format(DateFormat)
+		dueDate = time.Now().AddDate(0, 0, 30).Format(dateFormat)
 	}
 
 	paymentMethod := os.Getenv("PAYMENT_METHOD")
@@ -38,17 +38,7 @@ func main() {
 		CurrencySymbol:  "$",
 	})
 
-	// doc.SetHeader(&generator.HeaderFooter{
-	// 	Text:       "<center>Thank you for your business!</center>",
-	// 	Pagination: true,
-	// })
-
-	// doc.SetFooter(&generator.HeaderFooter{
-	// 	Text:       "<center>Thank you for your business!</center>",
-	// 	Pagination: true,
-	// })
-
-	doc.SetNotes("Thank you for your busines!")
+	doc.SetNotes("Thank you for your business!")
 
 	doc.SetInvoiceDate(invoiceDate)
 	doc.SetDueDate(dueDate)
