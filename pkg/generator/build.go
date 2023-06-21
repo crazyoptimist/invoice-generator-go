@@ -6,14 +6,14 @@ import (
 	"github.com/go-pdf/fpdf"
 )
 
-// Build pdf document from data provided
+// Build a PDF document from the data provided
 func (doc *Document) Build() (*fpdf.Fpdf, error) {
 	// Validate document data
 	if err := doc.Validate(); err != nil {
 		return nil, err
 	}
 
-	// Build base doc
+	// Build a base doc
 	doc.pdf.SetMargins(BaseMargin, BaseMarginTop, BaseMargin)
 	doc.pdf.SetXY(10, 10)
 	doc.pdf.SetTextColor(
@@ -42,7 +42,7 @@ func (doc *Document) Build() (*fpdf.Fpdf, error) {
 	// Load font
 	doc.pdf.SetFont(doc.Options.Font, "", 12)
 
-	// Appenf document title
+	// Append document title
 	doc.appendTitle()
 
 	// Append company contact to doc

@@ -1,6 +1,5 @@
 package generator
 
-// Address represent an address
 type Address struct {
 	Address    string `json:"address,omitempty" validate:"required"`
 	Address2   string `json:"address_2,omitempty"`
@@ -9,8 +8,8 @@ type Address struct {
 	Country    string `json:"country,omitempty"`
 }
 
-// ToString output address as string
-// Line break are added for new lines
+// Output address as string
+// Line breaks are added for new lines
 func (a *Address) ToString() string {
 	addrString := a.Address
 
